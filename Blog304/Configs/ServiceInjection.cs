@@ -20,8 +20,8 @@ public static class ServiceInjection
             // Get the address that the app is currently running at
             var server = sp.GetRequiredService<IServer>();
             var addressFeature = server.Features.Get<IServerAddressesFeature>();
-            var baseAddress = addressFeature.Addresses.First();
-            return new HttpClient { BaseAddress = new Uri(baseAddress) };
+            var baseAddress = addressFeature?.Addresses.First();
+            return new HttpClient { BaseAddress = new Uri(baseAddress ?? "http://localhost") };
         });
 
         //services.AddScoped<IHttpService, HttpService>();

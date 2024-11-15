@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Claim = System.Security.Claims.Claim;
 
 namespace DataProvider.Assistant.Helpers;
 
@@ -24,8 +25,8 @@ public static class JwtHelper
 
         var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.UniqueName, user.Username.ToLower())
+            new(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+            new(JwtRegisteredClaimNames.UniqueName, user.Username.ToLower())
         };
 
         var accessToken = new JwtSecurityToken(
