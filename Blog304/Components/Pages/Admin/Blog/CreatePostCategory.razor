@@ -1,0 +1,70 @@
+﻿@inject NavigationManager NavigationManager
+@using DataProvider.Models.Command.Blog
+@page "/create-post-category"
+<RadzenCard>
+    <RadzenHeading Size="H3">Create Post Category</RadzenHeading>
+
+    <RadzenTemplateForm TItem="CreatePostCategoryCommand" Data="@postCategory" Submit="@HandleSubmit">
+        <RadzenFieldset>
+            <RadzenLabel Text="Category Name" />
+            <RadzenTextBox @bind-Value="postCategory.Name" Style="width: 100%;" />
+        </RadzenFieldset>
+
+        <RadzenButton Text="Submit" Icon="save" Click="@HandleSubmit" ButtonStyle="ButtonStyle.Primary" Submit="true" Style="margin-right: 10px;" />
+        <RadzenButton Text="Cancel" Icon="close" Click="@HandleCancel" ButtonStyle="ButtonStyle.Secondary" />
+    </RadzenTemplateForm>
+
+    <RadzenNotification />
+</RadzenCard>
+
+@code {
+
+
+    CreatePostCategoryCommand postCategory = new CreatePostCategoryCommand();
+    
+    private async Task HandleSubmit()
+    {
+        try
+        {
+            // Serialize and send the data to the API endpoint
+            var response = await HttpService.PostValue("api/PostCategory/create-product-category", postCategory);
+
+            if (response.IsSuccessStatusCode)
+            {
+                NotificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Success,
+                        Summary = "Success",
+                        Detail = "Category created successfully!"
+                    });
+
+                // Redirect or reset form
+                postCategory = new CreatePostCategoryCommand();
+            }
+            else
+            {
+                var errorMessage = await response.Content.ReadAsStringAsync();
+                NotificationService.Notify(new NotificationMessage
+                    {
+                        Severity = NotificationSeverity.Error,
+                        Summary = "Error",
+                        Detail = errorMessage
+                    });
+            }
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(new NotificationMessage
+                {
+                    Severity = NotificationSeverity.Error,
+                    Summary = "Error",
+                    Detail = ex.Message
+                });
+        }
+    }
+
+    private void HandleCancel()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}

@@ -2,13 +2,13 @@
 using DataProvider.Base.Operation;
 using DataProvider.EntityFramework.Entities.Blog;
 using DataProvider.EntityFramework.Entities.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataProvider.Models.Command.Blog;
 
-public class CreatePostCategoryCommand(RequestInfo requestInfo) : IRequestInfo
+public class CreatePostCategoryCommand
 {
+    [Required(ErrorMessage = "Name is required")]
     public string Name { get; set; }
 
-    // navigation
-    public RequestInfo RequestInfo { get; private set; } = requestInfo;
 }
