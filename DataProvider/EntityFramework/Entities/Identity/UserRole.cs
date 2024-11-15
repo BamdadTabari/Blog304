@@ -1,8 +1,7 @@
-﻿using DataProvider.EntityFramework.Entities.Identity.Roles;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataProvider.EntityFramework.Entities.Identity.Users;
+namespace DataProvider.EntityFramework.Entities.Identity;
 
 public class UserRole : BaseEntity
 {

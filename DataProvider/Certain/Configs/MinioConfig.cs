@@ -1,7 +1,4 @@
-﻿using Minio;
-using System.Security.AccessControl;
-
-namespace DataProvider.Certain.Configs;
+﻿namespace DataProvider.Certain.Configs;
 
 // for saving file operation
 public class MinioConfig

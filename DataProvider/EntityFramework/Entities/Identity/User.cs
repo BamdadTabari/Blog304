@@ -2,12 +2,11 @@
 using DataProvider.Certain.Constants;
 using DataProvider.Certain.Enums;
 using DataProvider.EntityFramework.Entities.Blog;
-using DataProvider.EntityFramework.Entities.Identity.Claims;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace DataProvider.EntityFramework.Entities.Identity.Users;
+namespace DataProvider.EntityFramework.Entities.Identity;
 
 public class User : BaseEntity
 {

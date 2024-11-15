@@ -1,9 +1,8 @@
 ﻿using DataProvider.Certain.Constants;
-using DataProvider.EntityFramework.Entities.Identity.Roles;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataProvider.EntityFramework.Entities.Identity.Permissions;
+namespace DataProvider.EntityFramework.Entities.Identity;
 
 public class Permission : BaseEntity
 {

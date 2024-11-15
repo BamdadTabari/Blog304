@@ -1,8 +1,7 @@
-﻿using DataProvider.EntityFramework.Entities.Identity.Permissions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataProvider.EntityFramework.Entities.Identity.Roles;
+namespace DataProvider.EntityFramework.Entities.Identity;
 
 public class RolePermission : BaseEntity
 {

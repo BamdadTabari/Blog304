@@ -1,5 +1,5 @@
 ﻿using DataProvider.Certain.Configs;
-using DataProvider.EntityFramework.Entities.Identity.Users;
+using DataProvider.EntityFramework.Entities.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

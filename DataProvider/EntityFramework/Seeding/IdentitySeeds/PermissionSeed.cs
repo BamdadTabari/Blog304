@@ -1,4 +1,4 @@
-﻿using DataProvider.EntityFramework.Entities.Identity.Permissions;
+﻿using DataProvider.EntityFramework.Entities.Identity;
 
 namespace DataProvider.EntityFramework.Seeding.IdentitySeeds;
 

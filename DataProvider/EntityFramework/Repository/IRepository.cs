@@ -1,12 +1,7 @@
 ﻿using DataProvider.EntityFramework.Configs;
 using DataProvider.EntityFramework.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataProvider.EntityFramework.Repository;
 public interface IRepository<TEntity> where TEntity : class, IBaseEntity

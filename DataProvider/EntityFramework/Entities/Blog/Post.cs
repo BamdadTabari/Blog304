@@ -1,4 +1,4 @@
-﻿using DataProvider.EntityFramework.Entities.Identity.Users;
+﻿using DataProvider.EntityFramework.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

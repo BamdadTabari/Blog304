@@ -1,4 +1,4 @@
-﻿using DataProvider.EntityFramework.Entities.Identity.Users;
+﻿using DataProvider.EntityFramework.Entities.Identity;
 
 namespace DataProvider.EntityFramework.Seeding.IdentitySeeds;
 

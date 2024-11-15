@@ -1,6 +1,4 @@
-﻿using DataProvider.EntityFramework.Entities.Identity.Permissions;
-using DataProvider.EntityFramework.Entities.Identity.Roles;
-using DataProvider.EntityFramework.Entities.Identity.Users;
+﻿using DataProvider.EntityFramework.Entities.Identity;
 using DataProvider.EntityFramework.Seeding.IdentitySeeds;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;

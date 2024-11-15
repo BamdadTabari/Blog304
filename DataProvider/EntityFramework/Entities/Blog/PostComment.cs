@@ -1,5 +1,4 @@
-﻿using DataProvider.EntityFramework.Entities.Identity.Users;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataProvider.EntityFramework.Entities.Blog;

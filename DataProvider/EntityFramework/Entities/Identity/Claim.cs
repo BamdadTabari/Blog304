@@ -1,8 +1,7 @@
-﻿using DataProvider.EntityFramework.Entities.Identity.Users;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataProvider.EntityFramework.Entities.Identity.Claims;
+namespace DataProvider.EntityFramework.Entities.Identity;
 
 public class Claim : BaseEntity
 {
