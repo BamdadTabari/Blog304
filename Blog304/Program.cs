@@ -1,5 +1,6 @@
 using Blog304.Components;
 using Blog304.Configs;
+using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
 IWebHostEnvironment environment = builder.Environment;
@@ -9,7 +10,7 @@ ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddServices(configuration);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-
+builder.Services.AddRadzenComponents();
 builder.Services.AddControllers();
 builder.Services.AddMvc();
 var app = builder.Build();
@@ -25,6 +26,7 @@ if (!app.Environment.IsDevelopment())
 app.UseConfiguredExceptionHandler(environment);
 app.UseHttpsRedirection();
 
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
 app.UseAntiforgery();
 
