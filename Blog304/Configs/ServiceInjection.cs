@@ -1,4 +1,5 @@
 ﻿using DataProvider.EntityFramework.Configs;
+using DataProvider.EntityFramework.Repository;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.EntityFrameworkCore;
@@ -29,8 +30,7 @@ public static class ServiceInjection
           options.UseSqlServer(configuration.GetConnectionString("ServerDbConnection"))
           .EnableDetailedErrors());
 
-        //services.AddScoped<IUnitOfWorkIdentity, UnitOfWorkIdentity>();
-        //services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
     }
