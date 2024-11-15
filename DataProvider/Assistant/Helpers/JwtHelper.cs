@@ -10,7 +10,7 @@ namespace DataProvider.Assistant.Helpers;
 
 public static class JwtHelper
 {
-    public static SecurityTokenConfig Config;
+    public static readonly SecurityTokenConfig Config = new ();
 
     public static string CreateJwtAccessToken(this User user) =>
         user.CreateJwt(Config.AccessTokenSecretKey, Config.AccessTokenLifetime);
@@ -65,7 +65,7 @@ public static class JwtHelper
         return isValid;
     }
 
-    public static JwtPayload GetPayload(string token)
+    public static JwtPayload? GetPayload(string token)
     {
         if (string.IsNullOrEmpty(token))
             return null;
@@ -75,6 +75,6 @@ public static class JwtHelper
     public static string GetUsername(string token)
     {
         var payload = GetPayload(token);
-        return payload.Claims.SingleOrDefault(x => x.Type == "unique_name")?.Value;
+        return payload?.Claims.SingleOrDefault(x => x.Type == "unique_name")?.Value ?? string.Empty;
     }
 }

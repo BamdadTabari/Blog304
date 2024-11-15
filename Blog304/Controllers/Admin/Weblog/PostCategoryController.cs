@@ -1,8 +1,10 @@
 ﻿using DataProvider.Assistant.Pagination;
+using DataProvider.EntityFramework.Entities.Blog;
 using DataProvider.EntityFramework.Repository;
+using DataProvider.Models.Command.Blog;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Blog304.Controllers.Admin.Weblog;
 [Route("api/[controller]")]
@@ -15,20 +17,23 @@ public class PostCategoryController : ControllerBase
         _unitOfWork = unitOfWork;
     }
 
-    //[HttpPost("create-product-category")]
-    //public async Task Create([FromBody] string data)
-    //{
-    //    var dto = await Task.Run(() => JsonSerializer.Deserialize<ProductCategory>(data));
-    //    if (dto != null)
-    //    {
-    //        var imageDto = await _unitOfWork.Images.GetImageByPathAsync(dto.ImagePath);
-    //        dto.ImageAlt = imageDto.Alt;
-    //        dto.CreateDate = DateTime.Now; dto.ModifiedDate = DateTime.Now;
-    //        var entity = await Task.Run(() => _mapper.Map<ProductCategoryEntity>(dto));
-    //        await _unitOfWork.ProductCategories.AddAsync(entity);
-    //        await _unitOfWork.CommitAsync();
-    //    }
-    //}
+    [HttpPost("create-product-category")]
+    public async Task Create([FromBody] string data)
+    {
+        var dto = await Task.Run(() => JsonSerializer.Deserialize<CreatePostCategoryCommand>(data));
+        if (dto != null)
+        {
+            var entity = new PostCategory()
+            {
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
+                IsDeleted = false,
+                Name = dto.Name,
+            };
+            await _unitOfWork.PostCategoryRepo.AddAsync(entity);
+            await _unitOfWork.CommitAsync();
+        }
+    }
 
     //[HttpPut(ShopRoutes.ProductCategory + CRUDRouts.Update)]
     //public async Task Update([FromBody] string data)

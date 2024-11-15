@@ -6,8 +6,8 @@ public class OperationResult
     public readonly object Value;
     public readonly Dictionary<string, string> OperationValues;
 
-    public OperationResult(OperationResultStatus status, bool isPersistAble = false, object value = null,
-        Dictionary<string, string> operationValues = null)
+    public OperationResult(OperationResultStatus status, bool isPersistAble = false, object? value = null,
+        Dictionary<string, string>? operationValues = null)
     {
         Status = status;
         Value = value;
