@@ -9,13 +9,9 @@ using System.Text.Json;
 namespace Blog304.Controllers.Admin.Weblog;
 [Route("api/[controller]")]
 [ApiController]
-public class PostCategoryController : ControllerBase
+public class PostCategoryController(IUnitOfWork unitOfWork) : ControllerBase
 {
-    private readonly IUnitOfWork _unitOfWork;
-    public PostCategoryController(IUnitOfWork unitOfWork)
-    {
-        _unitOfWork = unitOfWork;
-    }
+    private readonly IUnitOfWork _unitOfWork = unitOfWork;
 
     [HttpPost("create-product-category")]
     public async Task Create([FromBody] string data)

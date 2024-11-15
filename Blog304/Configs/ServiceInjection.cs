@@ -1,9 +1,10 @@
-﻿using DataProvider.EntityFramework.Configs;
+﻿using DataProvider.Base.Services;
+using DataProvider.EntityFramework.Configs;
 using DataProvider.EntityFramework.Repository;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.EntityFrameworkCore;
-
+using MudBlazor.Services;
 namespace Blog304.Configs;
 
 public static class ServiceInjection
@@ -23,8 +24,8 @@ public static class ServiceInjection
             var baseAddress = addressFeature?.Addresses.First();
             return new HttpClient { BaseAddress = new Uri(baseAddress ?? "http://localhost") };
         });
-
-        //services.AddScoped<IHttpService, HttpService>();
+        services.AddMudServices();
+        services.AddScoped<IHttpService, HttpService>();
 
         services.AddDbContext<AppDbContext>(options =>
           options.UseSqlServer(configuration.GetConnectionString("ServerDbConnection"))
