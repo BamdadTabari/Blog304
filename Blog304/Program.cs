@@ -1,11 +1,17 @@
 using Blog304.Components;
+using Blog304.Configs;
 
 var builder = WebApplication.CreateBuilder(args);
-
+IWebHostEnvironment environment = builder.Environment;
+ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
+
+builder.Services.AddServices(configuration);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddControllers();
+builder.Services.AddMvc();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -16,6 +22,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseConfiguredExceptionHandler(environment);
 app.UseHttpsRedirection();
 
 
